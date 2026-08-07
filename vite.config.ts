@@ -8,19 +8,21 @@ export default defineConfig({
   plugins: [
     vue(),
     dts({
-      entryRoot: "./packages",
+      entryRoot: "./src",
       outDir: "./dist/es",
-      tsconfigPath: "./tsconfig.app.json"
+      tsconfigPath: "./tsconfig.app.json",
+      rollupTypes: true
     })
   ],
   resolve: {
     alias: {
-      "~": path.resolve(__dirname, "packages")
+      "~": path.resolve(__dirname, "src"),
+      "@": path.resolve(__dirname, "example/src")
     }
   },
   build: {
     lib: {
-      entry: path.resolve(__dirname, "packages/index.ts"),
+      entry: path.resolve(__dirname, "src/index.ts"),
       cssFileName: "style"
     },
     target: "modules",
@@ -30,26 +32,23 @@ export default defineConfig({
     rollupOptions: {
       // 请确保外部化那些你的库中不需要的依赖
       external: ["vue", "mitt"],
-      input: ["./packages/index.ts"],
+      input: ["./src/index.ts"],
       output: [
         {
           format: "es",
           preserveModules: true,
           entryFileNames: "[name].mjs",
           dir: "./dist/es",
-          preserveModulesRoot: "packages"
+          preserveModulesRoot: "src"
         },
         {
           format: "cjs",
           preserveModules: true,
           entryFileNames: "[name].js",
           dir: "./dist/lib",
-          preserveModulesRoot: "packages"
+          preserveModulesRoot: "src"
         }
       ]
-      // output: {
-      //
-      // }
     }
   }
 });
