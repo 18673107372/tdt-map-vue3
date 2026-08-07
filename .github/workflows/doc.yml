@@ -3,9 +3,9 @@ name: Deploy VitePress site to Pages
 
 # 触发条件
 on:
-  # 当代码推送到 main 分支时触发
-  push:
-    branches: [main]
+  # 当发布 Release 时触发
+  release:
+    types: [published]
   # 允许你从 GitHub Actions 页面手动触发部署
   workflow_dispatch:
 
