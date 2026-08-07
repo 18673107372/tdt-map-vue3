@@ -1,27 +1,49 @@
-name: Publish to npm
+# 工作流名称
+name: Deploy VitePress site to Pages
 
+# 触发条件
 on:
-  release:
-    types: [created]
+  # 当代码推送到 main 分支时触发
+  push:
+    branches: [main]
+  # 允许你从 GitHub Actions 页面手动触发部署
+  workflow_dispatch:
+
+# 为 GITHUB_TOKEN 设置权限，以便部署到 GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 确保同一时间只有一个部署任务在运行
+concurrency:
+  group: npm-release
+  cancel-in-progress: false
 
 jobs:
-  publish:
+  # 构建任务
+  build:
     runs-on: ubuntu-latest
-    # 关键：添加 OIDC 所需的权限
-    permissions:
-      contents: read
-      id-token: write
-
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
-          node-version: '20'
-          registry-url: 'https://registry.npmjs.org'
+          # 如果启用了 VitePress 的 lastUpdated 功能，此设置可以获取完整的 Git 历史
+          fetch-depth: 0
 
-      - run: npm ci
-      - run: npm run build
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22 # 或你项目使用的其他 LTS 版本
+          cache: npm # 如果使用 pnpm/yarn，请修改为相应名称
+
+      - name: Install dependencies
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install
+
+      - name: Build 
+        run: npm run build # 或你项目定义的构建命令
 
       # 重要的地方：不要设置任何 NODE_AUTH_TOKEN 或 NPM_TOKEN 环境变量
       - name: Publish to npm
