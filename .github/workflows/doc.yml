@@ -41,7 +41,7 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
         env:
           # 或者
           CI: 'true'  # CI 环境下 Husky 会自动跳过
