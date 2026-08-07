@@ -5,11 +5,9 @@
     "src/**/*",
     "src/**/*.vue",
     "example/**/*",
-    "example/**/*.vue",
-    "docs/.vitepress/**/*",
-    "docs/.vitepress/**/*.vue"
+    "example/**/*.vue"
   ],
-  "exclude": ["src/**/__tests__/*", "dist"],
+  "exclude": ["src/**/__tests__/*", "dist", "docs"],
   "compilerOptions": {
     "paths": {
       "~/*": ["./src/*"],

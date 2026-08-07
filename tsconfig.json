@@ -1,4 +1,16 @@
 {
+  "compilerOptions": {
+    "strict": true, // 总开关保持关闭
+    // 逐步开启以下子选项，一个一个来
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "forceConsistentCasingInFileNames": true // 👈 加上这一行
+  },
   "files": [],
   "references": [
     {

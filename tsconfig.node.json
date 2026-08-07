@@ -3,6 +3,17 @@
   "include": ["vite.config.*", "vitest.config.*", "cypress.config.*", "nightwatch.conf.*", "playwright.config.*"],
   "exclude": ["eslint.config.*"],
   "compilerOptions": {
+    "strict": true, // 总开关保持关闭
+    // 逐步开启以下子选项，一个一个来
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "forceConsistentCasingInFileNames": true, // 👈 加上这一行
+    "lib": ["ES2020", "DOM", "ES5", "ES6"],
     "composite": true,
     "noEmit": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",

@@ -10,7 +10,7 @@ export default [
 
   {
     name: "app/files-to-ignore",
-    ignores: ["**/dist/**", "**/dist-ssr/**", "**/coverage/**", "**/docs/.vitepress/cache/**", "**/lib/**"]
+    ignores: ["**/dist/**", "**/dist-ssr/**", "**/coverage/**", "**/docs/**", "**/lib/**"]
   },
 
   ...pluginVue.configs["flat/essential"],
