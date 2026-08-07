@@ -36,7 +36,7 @@ jobs:
           cache: npm
           cache-dependency-path: "package.json"
           # 设置 npm registry 和认证
-          registry-url: 'https://registry.npmjs.org'
+          # registry-url: 'https://registry.npmjs.org'
 
       - name: 安装 dependencies
         run: npm install
