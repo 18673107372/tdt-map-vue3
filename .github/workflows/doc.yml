@@ -26,21 +26,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           # 如果启用了 VitePress 的 lastUpdated 功能，此设置可以获取完整的 Git 历史
           fetch-depth: 0
 
       - name: 安装 Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           cache: npm # 如果使用 pnpm/yarn，请修改为相应名称
           cache-dependency-path: 'package.json'  # 不使用锁文件
 
       - name: 安装 Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v6
 
-      - name: Install dependencies
+      - name: 安装 dependencies
         run: npm install
         env:
           # 或者
