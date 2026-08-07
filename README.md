@@ -1,8 +1,8 @@
-# vue-tianditu2
+# tdt-map-vue3
 
 - 天地图 vue 组件库
 
-- [vue-tianditu2 文档](https://lvzhao1995.github.io/vue-tianditu/)
+- [tdt-map-vue3 文档](https://18673107372.github.io/tdt-map-vue3/)
 
 ## 说明
 
@@ -11,9 +11,9 @@
 ## 安装
 
 ```sh
-npm i vue-tianditu2
+npm i tdt-map-vue3
 # or
-yarn add vue-tianditu2
+yarn add tdt-map-vue3
 ```
 
 ## 快速上手
@@ -26,7 +26,7 @@ yarn add vue-tianditu2
 // main.ts
 import { createApp } from "vue";
 import App from "./App.vue";
-import { install } from "vue-tianditu2";
+import { install } from "tdt-map-vue3";
 
 const app = createApp(App);
 app.use(install, {

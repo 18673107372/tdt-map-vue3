@@ -2,9 +2,9 @@ import { defineConfig } from "vitepress";
 import path from "path";
 
 export default defineConfig({
-  base: "/vue-tianditu/",
+  base: "/tdt-map-vue3/",
   lang: "zh-CN",
-  title: "VueTianditu",
+  title: "天地图VUE3组件",
   description: "Vue Components for TiandituApi",
   vite: {
     define: {
@@ -21,7 +21,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: "github",
-        link: "https://github.com/lvzhao1995/vue-tianditu"
+        link: "https://github.com/18673107372/tdt-map-vue3"
       }
     ],
     nav: [
