@@ -1,41 +1,65 @@
-name: docs
+# 工作流名称
+name: Deploy VitePress site to Pages
 
+# 触发条件
 on:
-  # 每当 push 到 main 分支时触发部署
+  # 当代码推送到 main 分支时触发
   push:
     branches: [main]
-  # 手动触发部署
+  # 允许你从 GitHub Actions 页面手动触发部署
   workflow_dispatch:
 
-jobs:
-  docs:
-    runs-on: ubuntu-latest
+# 为 GITHUB_TOKEN 设置权限，以便部署到 GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
+# 确保同一时间只有一个部署任务在运行
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  # 构建任务
+  build:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
-          # “最近更新时间” 等 git 日志相关信息，需要拉取全部提交记录
+          # 如果启用了 VitePress 的 lastUpdated 功能，此设置可以获取完整的 Git 历史
           fetch-depth: 0
 
-      - name: 安装依赖
-        run: npm install
-      
-      - name: 安装rollup
-        run: npm install @rollup/rollup-linux-x64-gnu
-      
-      # 运行构建脚本
-      - name: 构建 VuePress 站点
-        run: npm run docs:build-no-copy
-
-      # 查看 workflow 的文档来获取更多信息
-      # @see https://github.com/crazy-max/ghaction-github-pages
-      - name: 部署到 GitHub Pages
-        uses: crazy-max/ghaction-github-pages@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          # 部署到 gh-pages 分支
-          target_branch: gh-pages
-          # 部署目录为 VuePress 的默认输出目录
-          build_dir: docs/.vuepress/dist
-        env:
-          # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
-          GITHUB_TOKEN: ${{ secrets.DOC_TOKEN }}
+          node-version: 20 # 或你项目使用的其他 LTS 版本
+          cache: npm # 如果使用 pnpm/yarn，请修改为相应名称
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Install dependencies
+        run: npm ci # 或 pnpm install / yarn install
+
+      - name: Build with VitePress
+        run: npm run docs:build # 或你项目定义的构建命令
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/.vitepress/dist # 构建输出目录
+
+  # 部署任务
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    name: Deploy
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
