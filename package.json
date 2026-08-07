@@ -1,0 +1,90 @@
+{
+  "name": "tdt-map-vue3",
+  "version": "1.0.4",
+  "description": "",
+  "repository": "https://github.com/18673107372/tdt-map-vue3.git",
+  "homepage": "https://github.com/18673107372/tdt-map-vue3",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/lib/index.js",
+  "module": "dist/es/index.mjs",
+  "types": "dist/es/index.d.ts",
+  "keywords": [
+    "vue",
+    "tianditu",
+    "map",
+    "skymap",
+    "tianmap",
+    "天地图"
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "package.json",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p type-check build-only",
+    "preview": "vite preview",
+    "docs:dev": "run-s copy-docs docs:dev-no-copy",
+    "docs:build": "run-s copy-docs docs:build-no-copy",
+    "docs:preview": "vitepress serve docs",
+    "docs:dev-no-copy": "vitepress dev docs",
+    "docs:build-no-copy": "vitepress build docs",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build --force",
+    "lint": "eslint . --fix",
+    "format": "prettier --write .",
+    "copy-docs": "ncp README.md docs/index.md && ncp CHANGELOG.md docs/CHANGELOG.md",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "prepare": "husky",
+    "release": "node scripts/release.js",
+    "prepublishOnly": "run-p build"
+  },
+  "dependencies": {
+    "mitt": "^3.0.1"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
+    "@tsconfig/node22": "^22.0.0",
+    "@types/node": "^22.13.9",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/eslint-config-prettier": "^10.2.0",
+    "@vue/eslint-config-typescript": "^14.5.0",
+    "@vue/tsconfig": "^0.7.0",
+    "conventional-changelog-cli": "^5.0.0",
+    "enquirer": "^2.4.1",
+    "eslint": "^9.21.0",
+    "eslint-plugin-vue": "^10.0.0",
+    "execa": "^9.5.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
+    "ncp": "^2.0.0",
+    "npm-run-all2": "^7.0.2",
+    "prettier": "^3.5.3",
+    "sass-embedded": "^1.85.1",
+    "tianditu-types": "^1.0.1",
+    "typescript": "~5.7.3",
+    "vite": "^6.2.0",
+    "vite-plugin-dts": "^4.5.3",
+    "vitepress": "^1.6.3",
+    "vue": "^3.5.13",
+    "vue-tsc": "^2.2.8"
+  },
+  "lint-staged": {
+    "*.{ts,vue}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  }
+}

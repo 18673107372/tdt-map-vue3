@@ -1,0 +1,23 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "include": [
+    "env.d.ts",
+    "src/**/*",
+    "src/**/*.vue",
+    "src/**/*.vue",
+    "packages/**/*",
+    "packages/**/*.vue",
+    "docs/.vitepress/**/*",
+    "docs/.vitepress/**/*.vue"
+  ],
+  "exclude": ["src/**/__tests__/*"],
+  "compilerOptions": {
+    "paths": {
+      "~/*": ["packages/*"]
+    },
+    "types": ["tianditu-types"],
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "baseUrl": "."
+  }
+}

@@ -1,0 +1,60 @@
+import type { PropType } from "vue";
+import type { DefineEmits, DefineProps, LngLat, LngLats } from "~/utils/types";
+
+export const NATIVE_PROPS = {
+  /** 从当前节点到下一节点的时间间隔 */
+  interval: { type: Number, default: 1000 },
+  /** 一个时间间隔移动的距离，单位是米。注：speed为0时，按照Datas数组中每个元素的坐标移动 */
+  speed: { type: Number, default: 0 },
+  /** 为true时轨迹线随车移动，而变化。false时，车辆运动轨迹提前画好且无动态变化 */
+  dynamicLine: { type: Boolean, default: false },
+  /** 数据来源 */
+  Datas: { type: Array as PropType<LngLats>, default: () => [] },
+  /** 车辆样式 */
+  carstyle: {
+    type: Object as PropType<T.CarOverlayOptions["carstyle"]>,
+    default: () => ({ display: true, width: 52, height: 26 })
+  },
+  /** 车辆轨迹线样式 */
+  polylinestyle: {
+    type: Object as PropType<T.CarOverlayOptions["polylinestyle"]>,
+    default: () => ({ display: true, color: "red", width: 3, opacity: 0.8 })
+  },
+  arrowStyle: {
+    default: () => ({
+      display: true,
+      offset: 30,
+      repeat: 60,
+      pixelSize: 5,
+      headAngle: 75,
+      color: "#fff",
+      weight: 3
+    })
+  },
+  passedLineColor: {
+    default: "#0000ff"
+  }, // 已通过路线颜色
+  notPassedLineColor: { default: "#ff0000" }, // 未通过路线颜色
+  loop: { default: false } // 循环播放
+};
+
+export const EXTRA_PROPS = {};
+
+export const NATIVE_EVENTS = {};
+
+export const EXTRA_EVENTS = {
+  init: (e: T.CarTrack) => e instanceof T.CarTrack,
+  /**
+   * 车辆移动一次时触发调用的方法
+   * @param lnglat 经过的坐标
+   * @param index 节点序号
+   * @param length 总节点数量
+   */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  passOneNode: (lnglat: LngLat, index: number, length: number | any) => true
+};
+
+export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS };
+export const EVENTS = { ...NATIVE_EVENTS, ...EXTRA_EVENTS };
+export type Props = DefineProps<typeof PROPS>;
+export type Emit = DefineEmits<typeof EVENTS>;

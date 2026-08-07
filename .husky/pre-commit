@@ -1,0 +1,4 @@
+run-p copy-docs
+git add docs/index.md
+git add docs/CHANGELOG.md
+lint-staged --allow-empty $1
