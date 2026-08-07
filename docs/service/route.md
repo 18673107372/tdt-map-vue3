@@ -11,7 +11,7 @@
 :::
 
 ```js
-import "vue-tianditu2/dist/es/style.css";
+import "tdt-map-vue3/dist/es/style.css";
 ```
 
 <demo-route></demo-route>

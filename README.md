@@ -1,12 +1,17 @@
 # tdt-map-vue3
 
-- 天地图 vue 组件库
+- 天地图 Vue 3 组件库
 
 - [tdt-map-vue3 文档](https://18673107372.github.io/tdt-map-vue3/)
 
 ## 说明
 
-由于原项目[vue-tianditu](https://github.com/SoulLyoko/vue-tianditu)长时间未更新，目前在typescript支持方面有一些问题，所以fork了一份，并修复了部分问题。去除了Vue 2支持，调整了类型声明文件和构建配置，更新了依赖项。
+由于原项目 [vue-tianditu](https://github.com/SoulLyoko/vue-tianditu) 长时间未更新，目前在 TypeScript 支持方面有一些问题，所以 fork 了一份，并修复了部分问题。
+
+本项目已全面重构：
+- 所有组件改为 `.vue` 单文件组件（SFC）+ `<script setup lang="ts">` 语法糖
+- 项目结构调整为标准 Vue 3 库结构（`src/` 为库源码，`example/` 为调试应用）
+- 完整的 TypeScript 类型支持
 
 ## 安装
 
@@ -46,7 +51,7 @@ app.mount("#app");
 
 <script lang="ts" setup>
   import { reactive } from "vue";
-  import type { LngLat } from "vue-tianditu2";
+  import type { LngLat } from "tdt-map-vue3";
 
   const state = reactive({
     center: [113.280637, 23.125178]  as LngLat,
@@ -81,7 +86,7 @@ app.mount("#app");
 
 <script lang="ts" setup>
   import { reactive } from "vue";
-  import { TdtMap, type LngLat } from "vue-tianditu2";
+  import { TdtMap, type LngLat } from "tdt-map-vue3";
 
   const loadConfig = { v: "4.0", tk: "your map token" };
   const state = reactive({
@@ -104,7 +109,7 @@ app.mount("#app");
 // main.ts
 import { createApp } from "vue";
 import App from "./App.vue";
-import { useApiLoader } from "vue-tianditu2";
+import { useApiLoader } from "tdt-map-vue3";
 
 const app = createApp(App);
 useApiLoader( {
@@ -124,7 +129,7 @@ app.mount("#app");
 
 <script lang="ts" setup>
   import { reactive } from "vue";
-  import { TdtMap, type LngLat } from "vue-tianditu2";
+  import { TdtMap, type LngLat } from "tdt-map-vue3";
 
   const state = reactive({
     center: [113.280637, 23.125178] as LngLat,
@@ -145,7 +150,7 @@ app.mount("#app");
 甚至可以把它当作无情的 API 加载工具
 
 ```ts
-import { useApiLoader } from "vue-tianditu2";
+import { useApiLoader } from "tdt-map-vue3";
 
 useApiLoader({
   v: "4.0",
@@ -159,7 +164,7 @@ useApiLoader({
 ## 辅助函数
 
 ```ts
-import { toLngLat, toBounds, toPoint, toIcon } from "vue-tianditu2";
+import { toLngLat, toBounds, toPoint, toIcon } from "tdt-map-vue3";
 ```
 
 ### 说明
@@ -184,7 +189,7 @@ import { toLngLat, toBounds, toPoint, toIcon } from "vue-tianditu2";
 </template>
 
 <script>
-  import { useApiLoader } from "vue-tianditu2";
+  import { useApiLoader } from "tdt-map-vue3";
   // 加载API
   useApiLoader({
     v: "4.0",
