@@ -34,7 +34,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20 # 或你项目使用的其他 LTS 版本
+          node-version: 22 # 或你项目使用的其他 LTS 版本
           cache: npm # 如果使用 pnpm/yarn，请修改为相应名称
 
       - name: Setup Pages
