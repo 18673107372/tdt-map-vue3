@@ -3,10 +3,11 @@ name: npm release
 
 # 触发条件
 on:
-  # 当代码推送到 main 分支时触发
-  push:
-    branches: [main]
-  # 允许你从 GitHub Actions 页面手动触发部署
+  # 当发布 Release 时触发
+  release:
+    types: [published]
+
+  # 允许你从 GitHub Actions 页面手动触发
   workflow_dispatch:
 
 # 为 GITHUB_TOKEN 设置权限，以便部署到 GitHub Pages
@@ -35,7 +36,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           cache: npm # 如果使用 pnpm/yarn，请修改为相应名称
-          cache-dependency-path: 'package.json'  # 不使用锁文件
+          cache-dependency-path: "package.json" # 不使用锁文件
 
       - name: 安装 Pages
         uses: actions/configure-pages@v6
@@ -44,9 +45,9 @@ jobs:
         run: npm install
         env:
           # 或者
-          CI: 'true'  # CI 环境下 Husky 会自动跳过
+          CI: "true" # CI 环境下 Husky 会自动跳过
 
-      - name: Build 
+      - name: Build
         run: npm run build # 或你项目定义的构建命令
 
       # 重要的地方：不要设置任何 NODE_AUTH_TOKEN 或 NPM_TOKEN 环境变量

@@ -5,7 +5,7 @@
  * @param {boolean} immediate 是否立即执行
  */
 export function debounce<F extends (...args: any[]) => void>(func: F, wait = 500, immediate = false) {
-  let timeout: NodeJS.Timeout | undefined;
+  let timeout: number | undefined;
   return function (...args: Parameters<F>) {
     if (timeout) clearTimeout(timeout);
     if (immediate) {

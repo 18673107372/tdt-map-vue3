@@ -1,4 +1,5 @@
 import type { DefineEmits, DefineProps } from "~/utils/types";
+import type { ToolInstances } from "../types";
 
 export const PROPS = {
   /** 是否可见 */
@@ -6,7 +7,7 @@ export const PROPS = {
 };
 
 export const EVENTS = {
-  init: () => true
+  init: (_instances: ToolInstances) => true
 };
 
 export type Props = DefineProps<typeof PROPS>;
