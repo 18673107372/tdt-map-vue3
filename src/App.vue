@@ -39,8 +39,8 @@
       <TdtCarTrack
         v-if="showPlayTrack"
         ref="carTrackRef"
-        :interval="200"
-        :speed="50"
+        :interval="1000"
+        :speed="100"
         :Datas="state.tracks"
       ></TdtCarTrack>
     </TdtMap>
