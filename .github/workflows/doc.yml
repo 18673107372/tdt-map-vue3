@@ -41,7 +41,9 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install --package-lock-only
+          npm ci
 
       - name: Build with VitePress
         run: npm run docs:build # 或你项目定义的构建命令
