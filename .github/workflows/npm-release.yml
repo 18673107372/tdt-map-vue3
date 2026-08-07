@@ -17,7 +17,7 @@ permissions:
 
 # 确保同一时间只有一个部署任务在运行
 concurrency:
-  group: npm-release
+  group: pages
   cancel-in-progress: false
 
 jobs:
@@ -26,21 +26,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           # 如果启用了 VitePress 的 lastUpdated 功能，此设置可以获取完整的 Git 历史
           fetch-depth: 0
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: 安装 Node
+        uses: actions/setup-node@v6
         with:
-          node-version: 22 # 或你项目使用的其他 LTS 版本
           cache: npm # 如果使用 pnpm/yarn，请修改为相应名称
+          cache-dependency-path: 'package.json'  # 不使用锁文件
 
-      - name: Install dependencies
-        run: |
-          rm -rf node_modules package-lock.json
-          npm install
+      - name: 安装 Pages
+        uses: actions/configure-pages@v6
+
+      - name: 安装 dependencies
+        run: npm install
+        env:
+          # 或者
+          CI: 'true'  # CI 环境下 Husky 会自动跳过
 
       - name: Build 
         run: npm run build # 或你项目定义的构建命令
