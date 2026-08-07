@@ -1,3 +1,28 @@
+## <small>2.0.4 (2026-08-07)</small>
+
+* Add installation step for rollup in workflow ([2d9916b](https://github.com/18673107372/tdt-map-vue3/commit/2d9916b))
+* Change build command for VuePress site ([8c04055](https://github.com/18673107372/tdt-map-vue3/commit/8c04055))
+* first commit ([1d4aae3](https://github.com/18673107372/tdt-map-vue3/commit/1d4aae3))
+* Rename workflow for npm release ([4adf15f](https://github.com/18673107372/tdt-map-vue3/commit/4adf15f))
+* Update dependency installation process in doc.yml ([e35113e](https://github.com/18673107372/tdt-map-vue3/commit/e35113e))
+* Update doc.yml ([a532298](https://github.com/18673107372/tdt-map-vue3/commit/a532298))
+* Update doc.yml ([7fa094e](https://github.com/18673107372/tdt-map-vue3/commit/7fa094e))
+* Update doc.yml ([6b037ac](https://github.com/18673107372/tdt-map-vue3/commit/6b037ac))
+* Update doc.yml ([be7b3ec](https://github.com/18673107372/tdt-map-vue3/commit/be7b3ec))
+* Update doc.yml ([1471311](https://github.com/18673107372/tdt-map-vue3/commit/1471311))
+* Update doc.yml ([4582362](https://github.com/18673107372/tdt-map-vue3/commit/4582362))
+* Update GitHub Actions workflow for VitePress deployment ([2428980](https://github.com/18673107372/tdt-map-vue3/commit/2428980))
+* Update GitHub Actions workflow for VitePress deployment ([85ff4ab](https://github.com/18673107372/tdt-map-vue3/commit/85ff4ab))
+* Update Node.js version in GitHub Actions workflow ([6f296f3](https://github.com/18673107372/tdt-map-vue3/commit/6f296f3))
+* Update npm-release.yml ([5285472](https://github.com/18673107372/tdt-map-vue3/commit/5285472))
+* 优化文档 ([40b14d1](https://github.com/18673107372/tdt-map-vue3/commit/40b14d1))
+* 修复doc发布工作流 ([190c5fe](https://github.com/18673107372/tdt-map-vue3/commit/190c5fe))
+* 修复doc工作流 ([0b2fae3](https://github.com/18673107372/tdt-map-vue3/commit/0b2fae3))
+* 增加文档工作流配置 ([fc40828](https://github.com/18673107372/tdt-map-vue3/commit/fc40828))
+* docs: 优化文档工作流 ([dda0ea9](https://github.com/18673107372/tdt-map-vue3/commit/dda0ea9))
+* docs: 修复配置问题 ([10b08c9](https://github.com/18673107372/tdt-map-vue3/commit/10b08c9))
+* refactor: 全面重构项目 — 组件转为 .vue SFC + script setup，调整目录结构 ([a79a888](https://github.com/18673107372/tdt-map-vue3/commit/a79a888))
+* chore: stop tracking package-lock.json ([4365ee7](https://github.com/18673107372/tdt-map-vue3/commit/4365ee7))
 ## <small>1.0.4 (2026-08-07)</small>
 ## <small>1.0.3 (2026-08-07)</small>
 ## <small>1.0.2 (2026-08-07)</small>
