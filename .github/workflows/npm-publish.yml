@@ -6,7 +6,9 @@ name: Node.js Package
 on:
   release:
     types: [created]
-
+# 允许你从 GitHub Actions 页面手动触发
+  workflow_dispatch:
+  
 jobs:
   build:
     runs-on: ubuntu-latest
