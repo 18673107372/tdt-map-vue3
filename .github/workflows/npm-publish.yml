@@ -6,16 +6,16 @@ name: Node.js Package
 on:
   release:
     types: [created]
-# 允许你从 GitHub Actions 页面手动触发
+  # 允许你从 GitHub Actions 页面手动触发
   workflow_dispatch:
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
-      - run: npm install
+      - run: npm ci
 
   publish-npm:
     needs: build
