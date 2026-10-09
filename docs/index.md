@@ -37,8 +37,7 @@ const app = createApp(App);
 app.use(install, {
   v: "4.0", //目前只支持4.0版本
   tk: "your map token",
-  plugins: ['D3', 'CarTrack'],  //需要加载的插件
-  plugDomain: '' //使用自定义加载插件的域名，官方发布的插件js（未压缩）会出现https强转为http的问题，可以变相使用代理解决问题
+  plugins: ['D3', 'CarTrack']  //需要加载的插件
 });
 app.mount("#app");
 ```
